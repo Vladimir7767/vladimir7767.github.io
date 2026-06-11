@@ -1,20 +1,241 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vladimir7767 Web Tools Portal</title>
-    <style>
-        body { font-family: sans-serif; background: #f0f2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
-        .box { background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; max-width: 400px; }
-        h1 { color: #1a1a1a; font-size: 22px; }
-        p { color: #666; font-size: 14px; line-height: 1.5; }
-    </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>IMPERIA Web Tools Hub — Free Online Calculators</title>
+<meta name="description" content="Multi-language catalog of free online tools, financial calculators, SEO analyzers, and text helpers. No registration required.">
+<style>
+body{font-family:'Segoe UI',sans-serif;background:#f4f6f9;margin:0;padding:0;color:#1e293b}
+.header{background:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.05);padding:15px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;flex-wrap:wrap;gap:15px}
+.logo{font-size:20px;font-weight:bold;color:#0284c7;display:flex;align-items:center;gap:8px}
+.lang-box{display:flex;gap:8px}
+.lang-btn{padding:6px 12px;border:1px solid #cbd5e1;background:#fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:13px;transition:0.2s}
+.lang-btn:hover,.lang-btn.active{background:#0284c7;color:#fff;border-color:#0284c7}
+.container{max-width:1000px;margin:30px auto;padding:0 20px;text-align:center}
+h1{font-size:28px;margin-bottom:10px;color:#0f172a}
+.sub-title{color:#64748b;font-size:15px;margin-bottom:30px}
+.lang-section{display:none}
+.lang-section.active{display:block}
+.category-title{text-align:left;font-size:18px;font-weight:bold;margin:25px 0 15px 0;color:#334155;border-left:4px solid #0284c7;padding-left:10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:15px;margin-bottom:30px}
+.card{background:#fff;padding:20px;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.03);text-align:left;transition:0.3s;text-decoration:none;color:inherit;border:1px solid #e2e8f0;display:flex;flex-direction:column;justify-content:space-between}
+.card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(2,132,199,0.1);border-color:#bae6fd}
+.card h4{margin:0 0 8px 0;font-size:15px;color:#0f172a}
+.card p{margin:0;font-size:12px;color:#64748b;line-height:1.4}
+.ad-banner{display:none;margin:20px auto;min-height:90px;text-align:center;max-width:728px}
+.footer{margin-top:40px;padding:20px;font-size:12px;color:#94a3b8;text-align:center;border-top:1px solid #e2e8f0}
+</style>
 </head>
 <body>
-<div class="box">
-    <h1>Useful Online Calculators & Tools</h1>
-    <p>Welcome to our professional multi-language utility platform. We develop high-quality, lightweight web software, conversion metrics, and daily productivity calculators for users worldwide.</p>
+
+<div class="header">
+<div class="logo">🎯 IMPERIA Tools Hub</div>
+<div class="lang-box">
+<button class="lang-btn active" onclick="setLang('ru', event)">RU</button>
+<button class="lang-btn" onclick="setLang('en', event)">EN</button>
+<button class="lang-btn" onclick="setLang('es', event)">ES</button>
+<button class="lang-btn" onclick="setLang('de', event)">DE</button>
+<button class="lang-btn" onclick="setLang('asia', event)">ASIA</button>
 </div>
+</div>
+
+<div class="container">
+<h1 id="mainTitle">Бесплатные онлайн-инструменты</h1>
+<p class="sub-title" id="mainSub">Быстрые веб-калькуляторы и утилиты на каждый день без регистрации. Все вычисления приватны.</p>
+
+<div id="ads" class="ad-banner"><div id="container-e8c895e6c70ade8e4ef4a72354f42e97"></div></div>
+
+<!-- СЕГМЕНТ RU (СНГ) -->
+<div id="sec-ru" class="lang-section active">
+<div class="category-title">📊 Бизнес и Финансы</div>
+<div class="grid">
+<a href="/roi-calculator/" class="card" onclick="showAdsClick(event, this.href)"><h4>Калькулятор ROI</h4><p>Расчет окупаемости ваших инвестиций и рекламы.</p></a>
+<a href="/currency-converter/" class="card" onclick="showAdsClick(event, this.href)"><h4>Конвертер валют</h4><p>Мгновенный обмен валют по кросс-курсам.</p></a>
+<a href="/credit-calculator/" class="card" onclick="showAdsClick(event, this.href)"><h4>Кредитный калькулятор</h4><p>Расчет аннуитетных платежей и переплаты.</p></a>
+<a href="/discount-calculator/" class="card" onclick="showAdsClick(event, this.href)"><h4>Калькулятор скидок</h4><p>Узнайте чистую экономию и финальную цену.</p></a>
+<a href="/percent-calculator/" class="card" onclick="showAdsClick(event, this.href)"><h4>Калькулятор процентов</h4><p>Быстрое нахождение процента от любого числа.</p></a>
+</div>
+<div class="category-title">🌐 Маркетинг и SEO</div>
+<div class="grid">
+<a href="/utm-generator/" class="card" onclick="showAdsClick(event, this.href)"><h4>Генератор UTM-меток</h4><p>Создание трекинговых ссылок для кампаний.</p></a>
+<a href="/seo-keyword-density/" class="card" onclick="showAdsClick(event, this.href)"><h4>Анализатор плотности слов</h4><p>SEO-аудит частоты ключевиков in тексте.</p></a>
+<a href="/qr-generator/" class="card" onclick="showAdsClick(event, this.href)"><h4>Генератор QR-кодов</h4><p>Создание вечных QR-кодов для сайтов и ссылок.</p></a>
+</div>
+<div class="category-title">📝 Текст и Рандом</div>
+<div class="grid">
+<a href="/text-tools/" class="card" onclick="showAdsClick(event, this.href)"><h4>Инструменты текста</h4><p>Быстрое изменение регистра букв онлайн.</p></a>
+<a href="/password-generator/" class="card" onclick="showAdsClick(event, this.href)"><h4>Генератор паролей</h4><p>Создание надежных взломостойких паролей.</p></a>
+<a href="/random-generator/" class="card" onclick="showAdsClick(event, this.href)"><h4>Рандомайзер чисел</h4><p>Генерация случайных чисел в диапазоне.</p></a>
+<a href="/list-randomizer/" class="card" onclick="showAdsClick(event, this.href)"><h4>Рандомайзер списков</h4><p>Перемешивание строк и выбор победителей.</p></a>
+<a href="/nickname-generator/" class="card" onclick="showAdsClick(event, this.href)"><h4>Генератор никнеймов</h4><p>Создание крутых игровых имен и псевдонимов.</p></a>
+<a href="/date-calculator/" class="card" onclick="showAdsClick(event, this.href)"><h4>Калькулятор дат</h4><p>Подсчет точного количества дней между датами.</p></a>
+</div>
+<div class="category-title">🍏 Здоровье</div>
+<div class="grid">
+<a href="/calories-calculator/" class="card" onclick="showAdsClick(event, this.href)"><h4>Калькулятор калорий и ИМТ</h4><p>Расчет индекса массы тела и нормы калорий.</p></a>
+</div>
+</div>
+<!-- СЕГМЕНТ EN (USA/TIER-1) -->
+<div id="sec-en" class="lang-section">
+<div class="category-title">📊 Business & Finance</div>
+<div class="grid">
+<a href="/roi-calculator-en/" class="card" onclick="showAdsClick(event, this.href)"><h4>ROI Calculator</h4><p>Calculate return on investment for marketing campaigns.</p></a>
+<a href="/currency-converter-en/" class="card" onclick="showAdsClick(event, this.href)"><h4>Currency Converter</h4><p>Instant money exchange rate calculation via cross rates.</p></a>
+<a href="/credit-calculator-en/" class="card" onclick="showAdsClick(event, this.href)"><h4>Loan Calculator</h4><p>Calculate monthly loan EMIs, interest, and repayments.</p></a>
+<a href="/discount-calculator-en/" class="card" onclick="showAdsClick(event, this.href)"><h4>Discount Calculator</h4><p>Find the final reduced price and your net money savings.</p></a>
+<a href="/percent-calculator-en/" class="card" onclick="showAdsClick(event, this.href)"><h4>Percentage Calculator</h4><p>Quickly find percentage value or add percent to number.</p></a>
+</div>
+<div class="category-title">🌐 Marketing & SEO</div>
+<div class="grid">
+<a href="/utm-generator-en/" class="card" onclick="showAdsClick(event, this.href)"><h4>UTM Link Builder</h4><p>Create tracked campaign URLs for web traffic analytics.</p></a>
+<a href="/seo-keyword-density-en/" class="card" onclick="showAdsClick(event, this.href)"><h4>Keyword Density Checker</h4><p>Analyze text word repetitions and optimal SEO frequency.</p></a>
+<a href="/qr-generator-en/" class="card" onclick="showAdsClick(event, this.href)"><h4>QR Code Generator</h4><p>Create permanent static QR codes for links and text.</p></a>
+</div>
+<div class="category-title">📝 Text & Randomizers</div>
+<div class="grid">
+<a href="/text-tools-en/" class="card" onclick="showAdsClick(event, this.href)"><h4>Text Case Converter</h4><p>Change text case register to upper, lower, or sentence.</p></a>
+<a href="/password-generator-en/" class="card" onclick="showAdsClick(event, this.href)"><h4>Password Generator</h4><p>Create secure, complex random passwords instantly.</p></a>
+<a href="/random-generator-en/" class="card" onclick="showAdsClick(event, this.href)"><h4>Random Number Generator</h4><p>Generate single or multiple random numbers in range.</p></a>
+<a href="/list-randomizer-en/" class="card" onclick="showAdsClick(event, this.href)"><h4>List Randomizer</h4><p>Shuffle text lines or pick a lucky giveaway winner.</p></a>
+<a href="/nickname-generator-en/" class="card" onclick="showAdsClick(event, this.href)"><h4>Nickname Generator</h4><p>Create cool gaming names and custom gamer tags.</p></a>
+<a href="/date-calculator-en/" class="card" onclick="showAdsClick(event, this.href)"><h4>Date Calculator</h4><p>Count precise number of days between custom dates.</p></a>
+</div>
+<div class="category-title">🍏 Health & Fitness</div>
+<div class="grid">
+<a href="/calories-calculator-en/" class="card" onclick="showAdsClick(event, this.href)"><h4>Calories & BMI Calculator</h4><p>Calculate body mass index and daily calorie needs.</p></a>
+</div>
+</div>
+
+<!-- СЕГМЕНТ ES (LATAM) -->
+<div id="sec-es" class="lang-section">
+<div class="category-title">📊 Negocios y Finanzas</div>
+<div class="grid">
+<a href="/calculadora-roi/" class="card" onclick="showAdsClick(event, this.href)"><h4>Calculadora de ROI</h4><p>Calcule el retorno de la inversión de sus campañas.</p></a>
+<a href="/conversor-divisas/" class="card" onclick="showAdsClick(event, this.href)"><h4>Conversor de Divisas</h4><p>Conversión de moneda instantánea a través de tasas cruzadas.</p></a>
+<a href="/calculadora-credito/" class="card" onclick="showAdsClick(event, this.href)"><h4>Calculadora de Crédito</h4><p>Simulador de préstamos, cuotas mensuales e intereses.</p></a>
+<a href="/calculadora-descuento/" class="card" onclick="showAdsClick(event, this.href)"><h4>Calculadora de Descuentos</h4><p>Encuentre el precio rebajado final y su ahorro neto.</p></a>
+<a href="/calculadora-porcentaje/" class="card" onclick="showAdsClick(event, this.href)"><h4>Calculadora de Porcentajes</h4><p>Encuentre fracciones, aumentos y valores porcentuales.</p></a>
+</div>
+<div class="category-title">🌐 Marketing y SEO</div>
+<div class="grid">
+<a href="/generador-utm/" class="card" onclick="showAdsClick(event, this.href)"><h4>Generador de Enlaces UTM</h4><p>Cree enlaces rastreados para análisis de tráfico web.</p></a>
+<a href="/analizador-seo/" class="card" onclick="showAdsClick(event, this.href)"><h4>Analizador de Palabras Clave</h4><p>Auditoría SEO de repetición de palabras en textos.</p></a>
+<a href="/generador-qr/" class="card" onclick="showAdsClick(event, this.href)"><h4>Generador de Códigos QR</h4><p>Cree códigos QR estáticos permanentes gratis.</p></a>
+</div>
+<div class="category-title">📝 Texto y Sorteos</div>
+<div class="grid">
+<a href="/herramientas-texto/" class="card" onclick="showAdsClick(event, this.href)"><h4>Herramientas de Texto</h4><p>Cambie el registro de texto a mayúsculas o minúsculas.</p></a>
+<a href="/generador-contrasenas/" class="card" onclick="showAdsClick(event, this.href)"><h4>Generador de Contraseñas</h4><p>Cree claves aleatorias seguras y complejas al instante.</p></a>
+<a href="/generador-aleatorio/" class="card" onclick="showAdsClick(event, this.href)"><h4>Generador Aleatorio</h4><p>Genere números aleatorios únicos dentro de un rango.</p></a>
+<a href="/organizador-listas/" class="card" onclick="showAdsClick(event, this.href)"><h4>Organizador de Listas</h4><p>Mezcle líneas de texto o elija un ganador del sorteo.</p></a>
+<a href="/generador-nombres/" class="card" onclick="showAdsClick(event, this.href)"><h4>Generador de Nombres</h4><p>Cree nombres de usuario geniales y etiquetas de juegos.</p></a>
+<a href="/calculadora-fechas/" class="card" onclick="showAdsClick(event, this.href)"><h4>Calculadora de Fechas</h4><p>Cuente el número exacto de días entre fechas.</p></a>
+</div>
+<div class="category-title">🍏 Salud y Bienestar</div>
+<div class="grid">
+<a href="/calculadora-calorias/" class="card" onclick="showAdsClick(event, this.href)"><h4>Calculadora de Calorías e IMC</h4><p>Calcule el índice de masa corporal y el gasto calórico.</p></a>
+</div>
+</div>
+<!-- СЕГМЕНТ DE (DEUTSCHLAND) -->
+<div id="sec-de" class="lang-section">
+<div class="category-title">📊 Finanzen & Unternehmen</div>
+<div class="grid">
+<a href="/roi-calculator-de/" class="card" onclick="showAdsClick(event, this.href)"><h4>ROI-Rechner</h4><p>Messen Sie die Rendite Ihrer Marketing-Investitionen.</p></a>
+<a href="/currency-converter-de/" class="card" onclick="showAdsClick(event, this.href)"><h4>Währungsrechner</h4><p>Sofortiger Geldumtausch zu aktuellen Cross-Kursen.</p></a>
+<a href="/credit-calculator-de/" class="card" onclick="showAdsClick(event, this.href)"><h4>Kreditrechner</h4><p>Berechnen Sie monatliche Raten, Zinsen und Gesamtkosten.</p></a>
+<a href="/discount-calculator-de/" class="card" onclick="showAdsClick(event, this.href)"><h4>Rabattrechner</h4><p>Finden Sie den reduzierten Preis und Ihre reine Ersparnis.</p></a>
+<a href="/percent-calculator-de/" class="card" onclick="showAdsClick(event, this.href)"><h4>Prozentrechner</h4><p>Prozentwert einer Zahl finden oder Prozente addieren.</p></a>
+</div>
+<div class="category-title">🌐 Marketing & SEO</div>
+<div class="grid">
+<a href="/utm-generator-de/" class="card" onclick="showAdsClick(event, this.href)"><h4>UTM-Generator</h4><p>Erstellen Sie Tracking-Links für Kampagnenanalysen.</p></a>
+<a href="/seo-keyword-density-de/" class="card" onclick="showAdsClick(event, this.href)"><h4>SEO-Textanalyse</h4><p>Prüfen Sie die Keyword-Dichte und Wortfrequenzen.</p></a>
+<a href="/qr-generator-de/" class="card" onclick="showAdsClick(event, this.href)"><h4>QR-Code-Generator</h4><p>Statische QR-Codes für Links ohne Anmeldung erstellen.</p></a>
+</div>
+<div class="category-title">📝 Text & Zufall</div>
+<div class="grid">
+<a href="/text-tools-de/" class="card" onclick="showAdsClick(event, this.href)"><h4>Text-Tools</h4><p>Groß- und Kleinschreibung von Textzeilen ändern.</p></a>
+<a href="/password-generator-de/" class="card" onclick="showAdsClick(event, this.href)"><h4>Passwort-Generator</h4><p>Sichere, komplexe und zufällige Passwörter erstellen.</p></a>
+<a href="/random-generator-de/" class="card" onclick="showAdsClick(event, this.href)"><h4>Zufallsgenerator</h4><p>Generieren Sie Zufallszahlen im gewünschten Bereich.</p></a>
+<a href="/list-randomizer-de/" class="card" onclick="showAdsClick(event, this.href)"><h4>Listen-Randomizer</h4><p>Textzeilen mischen oder Gewinnspiel-Gewinner ziehen.</p></a>
+<a href="/nickname-generator-de/" class="card" onclick="showAdsClick(event, this.href)"><h4>Spitznamen-Generator</h4><p>Coole Gamertags im Zocker- oder Fantasy-Stil erstellen.</p></a>
+<a href="/date-calculator-de/" class="card" onclick="showAdsClick(event, this.href)"><h4>Datumsrechner</h4><p>Genaue Anzahl der Tage zwischen zwei Daten zählen.</p></a>
+</div>
+<div class="category-title">🍏 Gesundheit</div>
+<div class="grid">
+<a href="/calories-calculator-de/" class="card" onclick="showAdsClick(event, this.href)"><h4>Kalorien & BMI Rechner</h4><p>Body-Mass-Index und täglichen Kalorienbedarf berechnen.</p></a>
+</div>
+</div>
+
+<!-- СЕГМЕНТ ASIA (ENGLISH/ASIA) -->
+<div id="sec-asia" class="lang-section">
+<div class="category-title">📊 Finance & Utilities</div>
+<div class="grid">
+<a href="/roi-calculator-asia/" class="card" onclick="showAdsClick(event, this.href)"><h4>ROI Calculator</h4><p>Calculate marketing campaign return on investment.</p></a>
+<a href="/currency-converter-asia/" class="card" onclick="showAdsClick(event, this.href)"><h4>Currency Converter</h4><p>Instant money conversion via fixed accurate cross rates.</p></a>
+<a href="/credit-calculator-asia/" class="card" onclick="showAdsClick(event, this.href)"><h4>Loan Calculator</h4><p>Calculate monthly EMIs, total interest, and repayments.</p></a>
+<a href="/discount-calculator-asia/" class="card" onclick="showAdsClick(event, this.href)"><h4>Discount Calculator</h4><p>Find reduced product price and your net cash savings.</p></a>
+<a href="/percent-calculator-asia/" class="card" onclick="showAdsClick(event, this.href)"><h4>Percentage Calculator</h4><p>Find percentage of a number or add percent to value.</p></a>
+</div>
+<div class="category-title">🌐 Marketing & Optimization</div>
+<div class="grid">
+<a href="/utm-generator-asia/" class="card" onclick="showAdsClick(event, this.href)"><h4>UTM Link Builder</h4><p>Create tracked URLs for analytical campaign campaigns.</p></a>
+<a href="/seo-keyword-density-asia/" class="card" onclick="showAdsClick(event, this.href)"><h4>SEO Text Analyzer</h4><p>Audit word repetitions and keyword density percentage.</p></a>
+<a href="/qr-generator-asia/" class="card" onclick="showAdsClick(event, this.href)"><h4>QR Code Generator</h4><p>Generate permanent static QR codes for links or texts.</p></a>
+</div>
+<div class="category-title">📝 Core Randomizers & Text</div>
+<div class="grid">
+<a href="/text-tools-asia/" class="card" onclick="showAdsClick(event, this.href)"><h4>Text Case Converter</h4><p>Change formatting case register to upper, lower, sentence.</p></a>
+<a href="/password-generator-asia/" class="card" onclick="showAdsClick(event, this.href)"><h4>Password Generator</h4><p>Generate secure, complex random strings instantly.</p></a>
+<a href="/random-generator-asia/" class="card" onclick="showAdsClick(event, this.href)"><h4>Random Number Generator</h4><p>Pick single or multiple lucky draw numbers in range.</p></a>
+<a href="/list-randomizer-asia/" class="card" onclick="showAdsClick(event, this.href)"><h4>List Randomizer</h4><p>Shuffle names or pull a sweepstakes lucky draw winner.</p></a>
+<a href="/nickname-generator-asia/" class="card" onclick="showAdsClick(event, this.href)"><h4>Nickname Generator</h4><p>Generate catchy gamer tags for PUBG or Free Fire.</p></a>
+<a href="/date-calculator-asia/" class="card" onclick="showAdsClick(event, this.href)"><h4>Date Calculator</h4><p>Count exact time duration and days between calendar dates.</p></a>
+</div>
+<div class="category-title">🍏 Health</div>
+<div class="grid">
+<a href="/calories-calculator-asia/" class="card" onclick="showAdsClick(event, this.href)"><h4>Calories & BMI Calculator</h4><p>Measure body mass index and basic daily calorie needs.</p></a>
+</div>
+</div>
+
+</div> <!-- Конец контейнера -->
+
+<div class="footer">&copy; 2026 IMPERIA Web Tools System. All rights reserved. Professional Web Utilities.</div>
+
+<script>
+const translations = {
+ru: { t: "Бесплатные онлайн-инструменты", s: "Быстрые веб-калькуляторы и утилиты на каждый день без регистрации. Все вычисления приватны." },
+en: { t: "Free Online Web Tools", s: "Fast web calculators and daily utilities without registration. All processing is 100% private." },
+es: { t: "Herramientas Online Gratuitas", s: "Calculadoras web rápidas y utilidades diarias sin registro. Todo el procesamiento es privado." },
+de: { t: "Kostenlose Online-Webtools", s: "Schnelle Webrechner und tägliche Dienstprogramme ohne Registrierung. Alle Berechnungen sind privat." },
+asia: { t: "Best Free Web Utilities Asia", s: "Fast online campaign calculators and lucky draw tools for Asian regions. Free and private." }
+};
+
+function setLang(lang, e) {
+document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+if(e && e.target) {
+e.target.classList.add('active');
+}
+document.querySelectorAll('.lang-section').forEach(s => s.classList.remove('active'));
+document.getElementById('sec-' + lang).classList.add('active');
+document.getElementById('mainTitle').innerText = translations[lang].t;
+document.getElementById('mainSub').innerText = translations[lang].s;
+}
+
+function showAdsFunc(){
+const c=document.getElementById('ads');
+if(!window.adScriptLoaded){
+window.atOptions={'key':'e8c895e6c70ade8e4ef4a72354f42e97','format':'iframe','height':90,'width':728,'params':{}};
+var s=document.createElement('script');s.type='text/javascript';s.async=!0;
+s.src=['https://','bagelstoppage.','com/','e8c895e6c70ade8e4ef4a72354f42e97/','invoke.js'].join('');c.appendChild(s);window.adScriptLoaded=!0
+}c.style.display='block'
+}
+
+function showAdsClick(e, href) {
+e.preventDefault();
+showAdsFunc();
+setTimeout(() => { window.location.href = href; }, 150);
+}
+</script>
 </body>
 </html>
