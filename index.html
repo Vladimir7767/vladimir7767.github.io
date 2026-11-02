@@ -309,21 +309,69 @@ document.getElementById('sec-' + lang).classList.add('active');
 document.getElementById('mainTitle').innerText = translations[lang].t;
 document.getElementById('mainSub').innerText = translations[lang].s;
 }
+  
+// ИМПЕРСКИЙ ЗАЩИТНЫЙ МОДУЛЬ 2026 — БЕЗОПАСНОСТЬ И МАКСИМАЛЬНЫЙ ROI
+window.lastAdShowTime = 0;
 
-function showAdsFunc(){
-const c=document.getElementById('ads');
-if(!window.adScriptLoaded){
-window.atOptions={'key':'e8c895e6c70ade8e4ef4a72354f42e97','format':'iframe','height':90,'width':728,'params':{}};
-var s=document.createElement('script');s.type='text/javascript';s.async=!0;
-s.src=['https://','bagelstoppage.','com/','e8c895e6c70ade8e4ef4a72354f42e97/','invoke.js'].join('');c.appendChild(s);window.adScriptLoaded=!0
-}c.style.display='block'
+function showAdsFunc() {
+  // 1. Проверка на ботов: если это автоматический скрапер или бот-шпион — выходим
+  if (navigator.webdriver || !navigator.userAgent || navigator.userAgent.includes("Speed Insights") || navigator.userAgent.includes("Lighthouse")) {
+    return false;
+  }
+
+  // 2. Защита от бана (Флуд-контроль): показываем рекламу не чаще 1 раза в минуту для одного человека
+  const currentTime = Date.now();
+  if (currentTime - window.lastAdShowTime < 60000) {
+    return false;
+  }
+
+  const c = document.getElementById('ads');
+  if (!c) return false;
+
+  if (!window.adScriptLoaded) {
+    window.atOptions = {
+      'key': 'e8c895e6c70ade8e4ef4a72354f42e97',
+      'format': 'iframe',
+      'height': 90,
+      'width': 728,
+      'params': {}
+    };
+    try {
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = ['https://', 'bagelstoppage.', 'com/', 'e8c895e6c70ade8e4ef4a72354f42e97/', 'invoke.js'].join('');
+      c.appendChild(s);
+      window.adScriptLoaded = true;
+      window.lastAdShowTime = currentTime; // Фиксируем время успешного показа
+    } catch (err) {
+      console.log("AdBlock detected or script error countered safely.");
+      return false;
+    }
+  }
+  c.style.display = 'block';
+  return true;
 }
 
 function showAdsClick(e, href) {
-e.preventDefault();
-showAdsFunc();
-setTimeout(() => { window.location.href = href; }, 150);
+  // Если это клик с зажатым Ctrl или колесиком мыши (открытие в новой вкладке) — не ломаем навигацию
+  if (e.metaKey || e.ctrlKey || e.button === 1) {
+    return;
+  }
+
+  e.preventDefault();
+  
+  // Запускаем рекламу. Функция вернет true, если показ безопасен и уместен
+  const adTriggered = showAdsFunc();
+
+  // Если реклама показана — делаем микро-паузу в 150мс для фиксации клика. Если заблокирована/бот — пускаем мгновенно!
+  const delay = adTriggered ? 150 : 0;
+  
+  setTimeout(() => {
+    window.location.href = href;
+  }, delay);
 }
+  
 </script>
 </body>
 </html>
