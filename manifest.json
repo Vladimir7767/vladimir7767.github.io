@@ -1,0 +1,16 @@
+{
+  "name": "IMPERIA Web Tools Hub",
+  "short_name": "IMPERIA Hub",
+  "description": "36+ Free Professional Calculators & Web Utilities",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f6f9",
+  "theme_color": "#0284c7",
+  "icons": [
+    {
+      "src": "https://flaticon.com",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
