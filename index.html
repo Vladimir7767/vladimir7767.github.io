@@ -466,7 +466,9 @@ const searchPlaceholders = {
 };
 
 function filterHubCards() {
-  const query = document.getElementById('hub-search-input').value.toLowerCase().trim();
+  const input = document.getElementById('hub-search-input');
+  if (!input) return;
+  const query = input.value.toLowerCase().trim();
   const activeSec = document.querySelector('.lang-section.active');
   if (!activeSec) return;
 
@@ -483,6 +485,12 @@ function filterHubCards() {
     }
     grid.style.display = visibleCards.length > 0 ? '' : 'none';
   });
+}
+
+const hubSearchEl = document.getElementById('hub-search-input');
+if (hubSearchEl) {
+  hubSearchEl.addEventListener('input', filterHubCards);
+  hubSearchEl.addEventListener('keyup', filterHubCards);
 }
 }
 </script>
