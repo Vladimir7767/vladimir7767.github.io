@@ -54,6 +54,9 @@ h1{font-size:28px;margin-bottom:10px;color:#0f172a}
   </div>
   <button id="pwa-install-btn" onclick="triggerPwaInstall()" style="background:#0284c7; color:#fff; border:none; border-radius:8px; padding:8px 14px; font-size:12px; font-weight:700; cursor:pointer; white-space:nowrap;">📲 Скачать приложение</button>
 </div>
+<div style="max-width:600px; margin:16px auto 24px auto;">
+  <input type="text" id="hub-search-input" oninput="filterHubCards()" placeholder="🔍 Быстрый поиск по 38+ калькуляторам (например: ИИ, кредит, SEO, кофе)..." style="width:100%; padding:12px 16px; border:1px solid #cbd5e1; border-radius:12px; font-size:14px; background:#ffffff; color:#0f172a; box-shadow:0 2px 4px rgba(0,0,0,0.03); outline:none;">
+</div>
 
 <div id="ads" class="ad-banner"><div id="container-e8c895e6c70ade8e4ef4a72354f42e97"></div></div>
 
@@ -346,6 +349,8 @@ document.getElementById('sec-' + lang).classList.add('active');
 document.getElementById('mainTitle').innerText = translations[lang].t;
 document.getElementById('mainSub').innerText = translations[lang].s;
   updatePwaBannerLang(lang);
+  const sInput = document.getElementById('hub-search-input');
+  if (sInput) { sInput.value = ''; sInput.placeholder = searchPlaceholders[lang] || searchPlaceholders.en; filterHubCards(); }
 }
   
 // ИМПЕРСКИЙ ЗАЩИТНЫЙ МОДУЛЬ 2026 — БЕЗОПАСНОСТЬ И МАКСИМАЛЬНЫЙ ROI
@@ -452,6 +457,33 @@ function triggerPwaInstall() {
     const t = pwaTranslations[activeLang] || pwaTranslations.ru;
     alert(t.ios);
   }
+const searchPlaceholders = {
+  ru: "🔍 Быстрый поиск по 38+ калькуляторам (например: ИИ, кредит, SEO, кофе)...",
+  en: "🔍 Instant search across 38+ tools (e.g., AI, ROI, SEO, sleep, crypto)...",
+  es: "🔍 Búsqueda rápida en 38+ herramientas (ej. IA, crédito, SEO, café)...",
+  de: "🔍 Schnellsuche in 38+ Rechnern (z. B. KI, Kredit, SEO, Kaffee)...",
+  asia: "🔍 Instant search across 38+ tools (e.g., AI, ROI, SEO, sleep, crypto)..."
+};
+
+function filterHubCards() {
+  const query = document.getElementById('hub-search-input').value.toLowerCase().trim();
+  const activeSec = document.querySelector('.lang-section.active');
+  if (!activeSec) return;
+
+  activeSec.querySelectorAll('.card').forEach(card => {
+    const text = card.innerText.toLowerCase();
+    card.style.display = text.includes(query) ? '' : 'none';
+  });
+
+  activeSec.querySelectorAll('.grid').forEach(grid => {
+    const visibleCards = Array.from(grid.querySelectorAll('.card')).filter(c => c.style.display !== 'none');
+    const title = grid.previousElementSibling;
+    if (title && title.classList.contains('category-title')) {
+      title.style.display = visibleCards.length > 0 ? '' : 'none';
+    }
+    grid.style.display = visibleCards.length > 0 ? '' : 'none';
+  });
+}
 }
 </script>
 </body>
