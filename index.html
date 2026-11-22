@@ -422,77 +422,79 @@ function showAdsClick(e, href) {
       navigator.serviceWorker.register('/sw.js');
     });
   }
-let deferredPrompt;
-const pwaTranslations = {
-  ru: { title: "Установите IMPERIA Hub на смартфон", desc: "Все 38+ калькуляторов в 1 клик и работа без интернета", btn: "📲 Скачать приложение", ios: "В браузере нажмите «Поделиться» (или ⋮) → «Добавить на главный экран»" },
-  en: { title: "Install IMPERIA Hub Mobile App", desc: "Instant 1-tap access to 38+ tools & offline mode", btn: "📲 Install App", ios: "Tap browser menu (⋮ or Share) → 'Add to Home Screen'" },
-  es: { title: "Instala la App IMPERIA Hub", desc: "Acceso en 1 clic a 38+ herramientas y modo sin conexión", btn: "📲 Instalar App", ios: "Toca el menú del navegador (⋮ o Compartir) → 'Añadir a pantalla de inicio'" },
-  de: { title: "IMPERIA Hub als App installieren", desc: "38+ Rechner mit 1 Klick & Offline-Modus nutzen", btn: "📲 App installieren", ios: "Browser-Menü (⋮ oder Teilen) → 'Zum Startbildschirm hinzufügen'" },
-  asia: { title: "Install IMPERIA Hub Mobile App", desc: "Instant 1-tap access to 38+ tools & offline mode", btn: "📲 Install App", ios: "Tap browser menu (⋮ or Share) → 'Add to Home Screen'" }
-};
 
-if (window.matchMedia('(display-mode: standalone)').matches) {
-  const b = document.getElementById('pwa-install-banner');
-  if (b) b.style.display = 'none';
-}
+  let deferredPrompt;
+  const pwaTranslations = {
+    ru: { title: "Установите IMPERIA Hub на смартфон", desc: "Все 38+ калькуляторов в 1 клик и работа без интернета", btn: "📲 Скачать приложение", ios: "В браузере нажмите «Поделиться» (или ⋮) → «Добавить на главный экран»" },
+    en: { title: "Install IMPERIA Hub Mobile App", desc: "Instant 1-tap access to 38+ tools & offline mode", btn: "📲 Install App", ios: "Tap browser menu (⋮ or Share) → 'Add to Home Screen'" },
+    es: { title: "Instala la App IMPERIA Hub", desc: "Acceso en 1 clic a 38+ herramientas y modo sin conexión", btn: "📲 Instalar App", ios: "Toca el menú del navegador (⋮ o Compartir) → 'Añadir a pantalla de inicio'" },
+    de: { title: "IMPERIA Hub als App installieren", desc: "38+ Rechner mit 1 Klick & Offline-Modus nutzen", btn: "📲 App installieren", ios: "Browser-Menü (⋮ oder Teilen) → 'Zum Startbildschirm hinzufügen'" },
+    asia: { title: "Install IMPERIA Hub Mobile App", desc: "Instant 1-tap access to 38+ tools & offline mode", btn: "📲 Install App", ios: "Tap browser menu (⋮ or Share) → 'Add to Home Screen'" }
+  };
 
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-});
-
-function updatePwaBannerLang(lang) {
-  const t = pwaTranslations[lang] || pwaTranslations.en;
-  if (document.getElementById('pwa-title')) document.getElementById('pwa-title').innerText = t.title;
-  if (document.getElementById('pwa-desc')) document.getElementById('pwa-desc').innerText = t.desc;
-  if (document.getElementById('pwa-install-btn')) document.getElementById('pwa-install-btn').innerText = t.btn;
-}
-
-function triggerPwaInstall() {
-  if (deferredPrompt) {
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
-  } else {
-    const activeLang = document.querySelector('.lang-btn.active')?.innerText.toLowerCase() || 'ru';
-    const t = pwaTranslations[activeLang] || pwaTranslations.ru;
-    alert(t.ios);
+  if (window.matchMedia('(display-mode: standalone)').matches) {
+    const b = document.getElementById('pwa-install-banner');
+    if (b) b.style.display = 'none';
   }
-const searchPlaceholders = {
-  ru: "🔍 Быстрый поиск по 38+ калькуляторам (например: ИИ, кредит, SEO, кофе)...",
-  en: "🔍 Instant search across 38+ tools (e.g., AI, ROI, SEO, sleep, crypto)...",
-  es: "🔍 Búsqueda rápida en 38+ herramientas (ej. IA, crédito, SEO, café)...",
-  de: "🔍 Schnellsuche in 38+ Rechnern (z. B. KI, Kredit, SEO, Kaffee)...",
-  asia: "🔍 Instant search across 38+ tools (e.g., AI, ROI, SEO, sleep, crypto)..."
-};
 
-function filterHubCards() {
-  const input = document.getElementById('hub-search-input');
-  if (!input) return;
-  const query = input.value.toLowerCase().trim();
-  const activeSec = document.querySelector('.lang-section.active');
-  if (!activeSec) return;
-
-  activeSec.querySelectorAll('.card').forEach(card => {
-    const text = card.innerText.toLowerCase();
-    card.style.display = text.includes(query) ? '' : 'none';
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
   });
 
-  activeSec.querySelectorAll('.grid').forEach(grid => {
-    const visibleCards = Array.from(grid.querySelectorAll('.card')).filter(c => c.style.display !== 'none');
-    const title = grid.previousElementSibling;
-    if (title && title.classList.contains('category-title')) {
-      title.style.display = visibleCards.length > 0 ? '' : 'none';
+  function updatePwaBannerLang(lang) {
+    const t = pwaTranslations[lang] || pwaTranslations.en;
+    if (document.getElementById('pwa-title')) document.getElementById('pwa-title').innerText = t.title;
+    if (document.getElementById('pwa-desc')) document.getElementById('pwa-desc').innerText = t.desc;
+    if (document.getElementById('pwa-install-btn')) document.getElementById('pwa-install-btn').innerText = t.btn;
+  }
+
+  function triggerPwaInstall() {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
+    } else {
+      const activeLang = document.querySelector('.lang-btn.active')?.innerText.toLowerCase() || 'ru';
+      const t = pwaTranslations[activeLang] || pwaTranslations.ru;
+      alert(t.ios);
     }
-    grid.style.display = visibleCards.length > 0 ? '' : 'none';
-  });
-}
+  }
 
-const hubSearchEl = document.getElementById('hub-search-input');
-if (hubSearchEl) {
-  hubSearchEl.addEventListener('input', filterHubCards);
-  hubSearchEl.addEventListener('keyup', filterHubCards);
-}
+  const searchPlaceholders = {
+    ru: "🔍 Быстрый поиск по 38+ калькуляторам (например: ИИ, кредит, SEO, кофе)...",
+    en: "🔍 Instant search across 38+ tools (e.g., AI, ROI, SEO, sleep, crypto)...",
+    es: "🔍 Búsqueda rápida en 38+ herramientas (ej. IA, crédito, SEO, café)...",
+    de: "🔍 Schnellsuche in 38+ Rechnern (z. B. KI, Kredit, SEO, Kaffee)...",
+    asia: "🔍 Instant search across 38+ tools (e.g., AI, ROI, SEO, sleep, crypto)..."
+  };
 
+  function filterHubCards() {
+    const input = document.getElementById('hub-search-input');
+    if (!input) return;
+    const query = input.value.toLowerCase().trim();
+    const activeSec = document.querySelector('.lang-section.active');
+    if (!activeSec) return;
+
+    activeSec.querySelectorAll('.card').forEach(card => {
+      const text = card.innerText.toLowerCase();
+      card.style.display = text.includes(query) ? '' : 'none';
+    });
+
+    activeSec.querySelectorAll('.grid').forEach(grid => {
+      const visibleCards = Array.from(grid.querySelectorAll('.card')).filter(c => c.style.display !== 'none');
+      const title = grid.previousElementSibling;
+      if (title && title.classList.contains('category-title')) {
+        title.style.display = visibleCards.length > 0 ? '' : 'none';
+      }
+      grid.style.display = visibleCards.length > 0 ? '' : 'none';
+    });
+  }
+
+  const hubSearchEl = document.getElementById('hub-search-input');
+  if (hubSearchEl) {
+    hubSearchEl.addEventListener('input', filterHubCards);
+    hubSearchEl.addEventListener('keyup', filterHubCards);
+  }
 </script>
 </body>
 </html>
