@@ -1,4 +1,4 @@
-const CACHE_NAME = 'imperia-hub-v1';
+const CACHE_NAME = 'imperia-hub-v2';
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();
